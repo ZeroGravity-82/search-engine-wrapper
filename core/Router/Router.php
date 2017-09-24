@@ -37,11 +37,15 @@ class Router
      * Registers a new route.
      * @param string   $url
      * @param callable $action
+     * @param string   $method
      */
-    public function add($url, $action)
+    public function add($url, $action, $method)
     {
         $url = $this->unifyUrl($url);
-        $this->routes[$url] = $action;
+        $this->routes[$url] = array(
+            'action' => $action,
+            'method' => $method,
+        );
     }
 
     /**
@@ -60,16 +64,21 @@ class Router
     public function dispatch()
     {
         // Try to find current request URL in array of registered routes and then calls it's callback or controller's action.
-        foreach($this->routes as $url => $action) {
+        foreach($this->routes as $url => $routeParams) {
+            $action = $routeParams['action'];
+            $method = $routeParams['method'];
             $requestUri = $this->unifyUrl($_SERVER['REQUEST_URI']);
-            if($url == $requestUri) {
-                if(is_callable($action)) {          // Route's action is a closure
-                    return $action();
-                }
-                list($class, $method) = explode('@', $action);
-                $controller = new $class;
-                return $controller->$method();     // TODO: Add extra checks for action string
+            $requestMethod = $_SERVER['REQUEST_METHOD'];
+
+            if($url != $requestUri || $method != $requestMethod) {
+                continue;
             }
+            if(is_callable($action)) {          // Route's action is a closure
+                return $action();
+            }
+            list($class, $method) = explode('@', $action);
+            $controller = new $class;
+            return $controller->$method();     // TODO: Add extra checks for action string
         }
 
         // If any of routes does not have required URL, notFound callback is executed
@@ -83,6 +92,6 @@ class Router
      */
     private function unifyUrl($url)
     {
-        return '/' . trim($url, '/');
+        return '/' . trim($url, '/');   // TODO: Remove query string from URL (for GET method only)
     }
 }

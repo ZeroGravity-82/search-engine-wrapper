@@ -22,7 +22,6 @@ class Controller
      */
     public function __construct()
     {
-        $viewLoader = new ViewLoader(APP_PATH . '/Views/');
-        $this->view = new View($viewLoader);
+        $this->view = new View();
     }
 }

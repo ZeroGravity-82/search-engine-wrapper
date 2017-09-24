@@ -1,11 +1,12 @@
 <?php
 
-// Front Controller
+/**
+ * Front Controller
+ */
 
-ini_set('display_errors', true);
-error_reporting(E_ALL);
-
+// Bootstrap app components
 require('../app/bootstrap.php');
 require('../app/routes.php');
 
-$router->dispatch();    // Pass control to the router
+// Pass control to the router
+$router->dispatch();
