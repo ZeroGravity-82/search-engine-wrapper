@@ -11,15 +11,15 @@ use Exception;
 class EngineSearchFactory
 {
     /**
-     * @param string $engine
+     * @param string $name
      * @param array  $config
      * @return AbstractSearch
      * @throws Exception
      */
-    public static function create($engine, $config)
+    public static function create($name, $config)
     {
         $resultFactory = new ResultFactory();
-        switch($engine) {
+        switch($name) {
             case 'yandex':
                 $apiKey = $config['engines']['yandex']['key'];
                 $userName = $config['engines']['yandex']['user'];

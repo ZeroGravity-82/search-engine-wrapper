@@ -63,7 +63,7 @@ class View
      * @param string $name
      * @return mixed
      */
-    public function _get($name)
+    public function __get($name)
     {
         return array_key_exists($name, $this->data)
             ? $this->data[$name]
