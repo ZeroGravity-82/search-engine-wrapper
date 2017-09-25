@@ -8,7 +8,7 @@ use DOMElement;
 /**
  * Class YandexXmlResponseParser
  */
-class YandexXmlResponseParser extends XmlResponseParser implements ResponseParserInterface
+class YandexXmlResponseParser extends XmlResponseParser
 {
     /**
      * @var string

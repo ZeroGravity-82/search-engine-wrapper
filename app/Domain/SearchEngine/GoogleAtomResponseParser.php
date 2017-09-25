@@ -7,7 +7,7 @@ use DOMNodeList;
 /**
  * Class GoogleAtomResponseParser
  */
-class GoogleAtomResponseParser extends XmlResponseParser implements ResponseParserInterface
+class GoogleAtomResponseParser extends XmlResponseParser
 {
     /**
      * @var string
