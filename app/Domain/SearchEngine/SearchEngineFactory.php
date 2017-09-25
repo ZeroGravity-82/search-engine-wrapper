@@ -2,19 +2,19 @@
 
 namespace App\Domain\SearchEngine;
 
-use Exception;
+use App\Domain\Exceptions\SearchEngineException;
 
 /**
- * Class EngineSearchFactory
+ * Class SearchEngineFactory
  * Creates an instance of search engine depending on user selection.
  */
-class EngineSearchFactory
+class SearchEngineFactory
 {
     /**
      * @param string $name
      * @param array  $config
      * @return AbstractSearch
-     * @throws Exception
+     * @throws SearchEngineException
      */
     public static function create($name, $config)
     {
@@ -34,7 +34,7 @@ class EngineSearchFactory
                 $parser = new GoogleAtomResponseParser($resultFactory);
                 return new GoogleSearch($apiKey, $searchEngineId, $parser);
             default:
-                throw new Exception('Invalid search engine name');  // TODO: Make custom exception class
+                throw SearchEngineException::invalidName($name);
         }
     }
 }
