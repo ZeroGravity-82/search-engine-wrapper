@@ -6,7 +6,7 @@ use Exception;
 
 /**
  * Class EngineSearchFactory
- * Creates an instance for search engine depending on user selection.
+ * Creates an instance of search engine depending on user selection.
  */
 class EngineSearchFactory
 {
