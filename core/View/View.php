@@ -2,8 +2,6 @@
 
 namespace Core\View;
 
-use Exception;
-
 /**
  * Class View
  * Handles view displaying.
@@ -33,14 +31,14 @@ class View
     /**
      * Render a view.
      * @param string $viewName
-     * @throws Exception
+     * @throws ViewException In case of view file absence.
      */
     public function render($viewName)
     {
         $viewFileName = $this->path . $viewName;
         if(!file_exists($viewFileName)) {
             // TODO: Make custom exception class
-            throw new Exception("View does not exist: " . $viewFileName);
+            throw ViewException::notExist($viewFileName);
         }
         extract($this->data);
         ob_start();
