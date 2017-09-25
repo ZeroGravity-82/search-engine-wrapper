@@ -37,7 +37,6 @@ class View
     {
         $viewFileName = $this->path . $viewName;
         if(!file_exists($viewFileName)) {
-            // TODO: Make custom exception class
             throw ViewException::notExist($viewFileName);
         }
         extract($this->data);

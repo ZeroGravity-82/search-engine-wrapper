@@ -10,7 +10,7 @@ use Exception;
 class ViewException extends Exception
 {
     /**
-     * @param $viewFileName
+     * @param string $viewFileName
      * @return ViewException
      */
     public static function notExist($viewFileName)

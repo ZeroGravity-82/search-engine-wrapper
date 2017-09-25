@@ -1,15 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ZG
- * Date: 25.09.2017
- * Time: 23:11
- */
 
 namespace App\Domain\Exceptions;
 
+use Exception;
 
-class SearchEngineException
+/**
+ * Class SearchEngineException
+ */
+class SearchEngineException extends Exception
 {
-
+    /**
+     * @param string $name
+     * @return SearchEngineException
+     */
+    public static function invalidName($name)
+    {
+        return new self('Invalid search engine name: ' . $name);
+    }
 }

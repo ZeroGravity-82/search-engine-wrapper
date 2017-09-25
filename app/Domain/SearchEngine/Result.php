@@ -4,6 +4,7 @@ namespace App\Domain\SearchEngine;
 
 /**
  * Class Result
+ * Search result.
  */
 class Result
 {

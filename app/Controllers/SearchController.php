@@ -2,11 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Domain\SearchEngine\EngineSearchFactory;
+use App\Domain\SearchEngine\SearchEngineFactory;
 
 /**
- * Class WelcomeControoler
- * @package App\Controllers
+ * Class WelcomeController
  */
 class SearchController extends Controller
 {
@@ -21,7 +20,7 @@ class SearchController extends Controller
     {
         $name = $_REQUEST['engine'];
         $config = require(APP_PATH . '/../config/engines.php');
-        $searchEngine = EngineSearchFactory::create($name, $config);
+        $searchEngine = SearchEngineFactory::create($name, $config);
 
         $query = $_REQUEST['query'];
         if(empty($query)) {                             // Empty search queries are not allowed, but better way

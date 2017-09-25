@@ -4,6 +4,7 @@ namespace App\Domain\SearchEngine;
 
 /**
  * Class ResultFactory
+ * Creates an instance of search result.
  */
 class ResultFactory implements ResultFactoryInterface
 {

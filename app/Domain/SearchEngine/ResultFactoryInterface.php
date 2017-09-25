@@ -2,6 +2,9 @@
 
 namespace App\Domain\SearchEngine;
 
+/**
+ * Interface ResultFactoryInterface
+ */
 interface ResultFactoryInterface
 {
     /**
